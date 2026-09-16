@@ -304,3 +304,170 @@ em { color: var(--purple-bright); font-style: normal; }
   .contact-links{margin-top:50px}.contact-links a{grid-template-columns:75px 1fr 20px}.contact-links strong{font-size:11px}
   .site-footer{padding:0 20px}
 }
+/* =========================================
+   HERO GEOMETRIC BACKGROUND — FIX
+   ========================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Main geometric visual */
+.hero-art {
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Large glowing orb */
+.hero-art::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    right: 70px;
+    top: 90px;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,0.28) 0%,
+            rgba(139,0,255,0.55) 18%,
+            rgba(139,0,255,0.22) 45%,
+            rgba(139,0,255,0.05) 70%,
+            transparent 75%
+        );
+
+    filter: blur(2px);
+    box-shadow:
+        0 0 80px rgba(139,0,255,0.35),
+        0 0 180px rgba(139,0,255,0.18);
+
+    animation: heroFloat 7s ease-in-out infinite;
+}
+
+/* Geometric wireframe */
+.hero-art::after {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    right: 105px;
+    top: 115px;
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 48%,
+            rgba(139,0,255,0.45) 49%,
+            rgba(139,0,255,0.45) 50%,
+            transparent 51%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 48%,
+            rgba(255,255,255,0.13) 49%,
+            rgba(255,255,255,0.13) 50%,
+            transparent 51%
+        );
+
+    background-size: 80px 80px;
+    transform: rotate(18deg) skewY(-8deg);
+    box-shadow:
+        inset 0 0 50px rgba(139,0,255,0.12),
+        0 0 40px rgba(139,0,255,0.15);
+
+    animation: heroRotate 18s linear infinite;
+}
+
+/* Additional floating geometry */
+.hero-art {
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.7%,
+            rgba(139,0,255,0.22) 50%,
+            transparent 50.3%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 49.7%,
+            rgba(255,255,255,0.08) 50%,
+            transparent 50.3%
+        );
+
+    background-size: 90px 90px;
+    opacity: 1;
+}
+
+/* Small glowing points */
+.hero-art {
+    filter: drop-shadow(0 0 25px rgba(139,0,255,0.12));
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-18px) scale(1.03);
+    }
+}
+
+@keyframes heroRotate {
+    from {
+        transform: rotate(18deg) skewY(-8deg);
+    }
+
+    to {
+        transform: rotate(378deg) skewY(-8deg);
+    }
+}
+
+
+/* =========================================
+   HERO CONTENT LAYER
+   ========================================= */
+
+.hero .container,
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .hero-art {
+        width: 420px;
+        height: 420px;
+        right: -170px;
+        top: 55%;
+        opacity: 0.7;
+    }
+
+    .hero-art::before {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-art::after {
+        width: 240px;
+        height: 240px;
+    }
+}
