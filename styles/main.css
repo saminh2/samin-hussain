@@ -497,3 +497,194 @@ em { color: var(--purple-bright); font-style: normal; }
   margin-top: 1.5rem;
 }
 ```
+```css
+/* ================================
+   INTERACTIVE PROJECT MODAL
+================================ */
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.project-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Blurred page behind the modal */
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(5, 7, 12, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  cursor: pointer;
+}
+
+/* Main pop-up panel */
+.project-modal-panel {
+  position: relative;
+  z-index: 1;
+
+  width: min(1100px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+
+  background: #111318;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+
+  box-shadow: 0 25px 100px rgba(0, 0, 0, 0.45);
+
+  transform: translateY(24px) scale(0.98);
+  transition: transform 0.3s ease;
+}
+
+.project-modal.is-open .project-modal-panel {
+  transform: translateY(0) scale(1);
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+/* Project content inside the pop-up */
+.modal-project-content > .project-detail {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Ensure project images fit inside the modal */
+.modal-project-content .project-detail > img {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  align-self: start;
+}
+
+/* Give the modal content room below the close button */
+.modal-project-content .detail-copy {
+  padding-top: 1rem;
+}
+
+.modal-project-content .detail-copy h2 {
+  padding-right: 2rem;
+}
+
+/* Make the project breakdown readable */
+.modal-project-content .project-section {
+  margin-top: 1.5rem;
+}
+
+.modal-project-content .project-section p {
+  line-height: 1.75;
+}
+
+/* Make the custom gadget visual scale correctly */
+.modal-project-content .detail-visual {
+  min-height: 300px;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .project-modal {
+    padding: 0.75rem;
+  }
+
+  .project-modal-panel {
+    max-height: 94vh;
+    padding: 1.5rem;
+    padding-top: 3.5rem;
+    border-radius: 8px;
+  }
+
+  .modal-close {
+    top: 0.65rem;
+    right: 0.75rem;
+  }
+
+  .modal-project-content .project-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .modal-project-content .project-detail > img {
+    max-height: 40vh;
+  }
+
+  .modal-project-content .detail-visual {
+    min-height: 220px;
+  }
+
+  .modal-project-content .detail-copy {
+    padding-top: 0;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .project-modal,
+  .project-modal-panel,
+  .modal-close {
+    transition: none;
+  }
+}
+```
