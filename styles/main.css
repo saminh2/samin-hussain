@@ -502,6 +502,7 @@ em { color: var(--purple-bright); font-style: normal; }
    INTERACTIVE PROJECT MODAL
 ================================ */
 
+/* Modal is completely hidden by default */
 .project-modal {
   position: fixed;
   inset: 0;
@@ -512,31 +513,9 @@ em { color: var(--purple-bright); font-style: normal; }
   justify-content: center;
 
   padding: 2rem;
-  visibility: hidden;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-}
-
-.project-modal.is-open {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Blurred page behind the modal */
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-
-  background: rgba(5, 7, 12, 0.76);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  cursor: pointer;
 }
 
 /* Main pop-up panel */
@@ -560,6 +539,7 @@ em { color: var(--purple-bright); font-style: normal; }
   transition: transform 0.3s ease;
 }
 
+/* Animate the panel when opened */
 .project-modal.is-open .project-modal-panel {
   transform: translateY(0) scale(1);
 }
