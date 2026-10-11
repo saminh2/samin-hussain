@@ -688,3 +688,32 @@ em { color: var(--purple-bright); font-style: normal; }
   }
 }
 ```
+```css
+/* Interactive project cards */
+.project-list .project-detail {
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.project-list .project-detail:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.project-list .project-detail:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 5px;
+}
+
+/* Keep interactive images from behaving like separate controls */
+.project-list .project-detail > img {
+  cursor: pointer;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-list .project-detail:hover {
+    transform: translateY(-3px);
+  }
+}
+```
