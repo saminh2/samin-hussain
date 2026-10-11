@@ -924,3 +924,34 @@ em { color: var(--purple-bright); font-style: normal; }
     transform: none;
   }
 }
+/* SENSORY GADGET PROJECT PREVIEW */
+
+.gadget-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gadget-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem;
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover .gadget-preview-image {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gadget-preview-image {
+    transition: none;
+  }
+
+  .project-card:hover .gadget-preview-image {
+    transform: none;
+  }
+}
