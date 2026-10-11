@@ -727,7 +727,7 @@ em { color: var(--purple-bright); font-style: normal; }
   z-index: 2000;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .resume-modal.is-open {
@@ -747,8 +747,8 @@ em { color: var(--purple-bright); font-style: normal; }
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: min(1000px, 100%);
-  max-height: 90vh;
+  width: min(1200px, 96%);
+  max-height: 96vh;
   overflow: hidden;
   background: #101014;
   border: 1px solid rgba(167, 139, 250, 0.25);
@@ -802,7 +802,7 @@ em { color: var(--purple-bright); font-style: normal; }
 .resume-preview {
   flex: 1;
   min-height: 0;
-  height: 65vh;
+  height: 78vh;
   background: #202027;
 }
 
@@ -851,11 +851,11 @@ em { color: var(--purple-bright); font-style: normal; }
 
 @media (max-width: 700px) {
   .resume-modal {
-    padding: 0.65rem;
+    padding: 0.4rem;
   }
 
   .resume-modal-panel {
-    max-height: 94vh;
+    max-height: 98vh;
     border-radius: 8px;
   }
 
@@ -864,7 +864,7 @@ em { color: var(--purple-bright); font-style: normal; }
   }
 
   .resume-preview {
-    height: 65vh;
+    height: 76vh;
     min-height: 250px;
   }
 
