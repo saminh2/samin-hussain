@@ -473,7 +473,6 @@ em { color: var(--purple-bright); font-style: normal; }
 }
 
 
-```css
 /* Individual project breakdowns */
 .project-section {
   margin-top: 1.5rem;
@@ -496,4 +495,224 @@ em { color: var(--purple-bright); font-style: normal; }
 .project-section + .tags {
   margin-top: 1.5rem;
 }
-```
+
+
+/* =========================================
+   INTERACTIVE PROJECT MODAL
+========================================= */
+
+/* Completely hidden until a project is selected */
+.project-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Open state */
+.project-modal.is-open {
+  display: flex;
+}
+
+/* Dark, blurred backdrop */
+.project-modal .modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background: rgba(5, 7, 12, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Centered modal window */
+.project-modal-panel {
+  position: relative;
+  z-index: 1;
+
+  width: min(1000px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+
+  margin: auto;
+  padding: clamp(2rem, 4vw, 3.5rem);
+
+  background: #111318;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+
+  box-shadow: 0 25px 100px rgba(0, 0, 0, 0.55);
+}
+
+/* Close button */
+.modal-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  margin-top: -0.5rem;
+  margin-right: -0.5rem;
+
+  border: none;
+  border-radius: 50%;
+  background: #111318;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #29232f;
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+/* Project content */
+.modal-project-content {
+  width: 100%;
+  clear: both;
+}
+
+.modal-project-content > .project-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: start;
+  gap: 2rem;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  transform: none;
+}
+
+/* Prevent the original card hover effect in the modal */
+.modal-project-content .project-detail:hover {
+  transform: none;
+  background: transparent;
+}
+
+/* Project images */
+.modal-project-content .project-detail > img,
+.modal-project-content .detail-visual {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 280px;
+  max-height: 55vh;
+
+  object-fit: contain;
+  overflow: hidden;
+  align-self: start;
+}
+
+/* Project text */
+.modal-project-content .detail-copy {
+  min-width: 0;
+  padding: 1rem 0;
+  align-self: start;
+}
+
+.modal-project-content .detail-copy h2 {
+  padding-right: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  overflow-wrap: anywhere;
+}
+
+.modal-project-content .project-section {
+  margin-top: 1.5rem;
+}
+
+.modal-project-content .project-section p {
+  line-height: 1.75;
+}
+
+.modal-project-content .tags {
+  margin-top: 1.5rem;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .project-modal {
+    padding: 0.75rem;
+  }
+
+  .project-modal-panel {
+    width: 100%;
+    max-height: 94vh;
+    padding: 3.5rem 1.25rem 1.5rem;
+    border-radius: 8px;
+  }
+
+  .modal-project-content > .project-detail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .modal-project-content .project-detail > img,
+  .modal-project-content .detail-visual {
+    min-height: 180px;
+    max-height: 40vh;
+  }
+
+  .modal-project-content .detail-copy {
+    padding: 0;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .modal-close {
+    transition: none;
+  }
+}
+
+/* Interactive project cards on the main page */
+.project-list .project-detail {
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.project-list .project-detail:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.project-list .project-detail:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 5px;
+}
+
+.project-list .project-detail > img {
+  cursor: pointer;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-list .project-detail:hover {
+    transform: translateY(-3px);
+  }
+}
