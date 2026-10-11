@@ -955,3 +955,21 @@ em { color: var(--purple-bright); font-style: normal; }
     transform: none;
   }
 }
+/* Project card images */
+.project-visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-visual > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover .project-visual > img {
+  transform: scale(1.03);
+}
