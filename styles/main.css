@@ -471,3 +471,29 @@ em { color: var(--purple-bright); font-style: normal; }
         height: 240px;
     }
 }
+
+
+```css
+/* Individual project breakdowns */
+.project-section {
+  margin-top: 1.5rem;
+}
+
+.project-section h3 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+  margin: 0 0 0.5rem;
+}
+
+.project-section p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Keep the project tags separated from the final section */
+.project-section + .tags {
+  margin-top: 1.5rem;
+}
+```
