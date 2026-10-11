@@ -473,7 +473,6 @@ em { color: var(--purple-bright); font-style: normal; }
 }
 
 
-```css
 /* Individual project breakdowns */
 .project-section {
   margin-top: 1.5rem;
@@ -496,8 +495,7 @@ em { color: var(--purple-bright); font-style: normal; }
 .project-section + .tags {
   margin-top: 1.5rem;
 }
-```
-```css
+
 
 /* =========================================
    INTERACTIVE PROJECT MODAL
