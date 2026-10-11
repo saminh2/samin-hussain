@@ -299,22 +299,136 @@
 </div>
 ```
   
+```html
 <script>
-  const t = document.querySelector('.menu-toggle');
-  const m = document.querySelector('.mobile-nav');
+// MOBILE NAVIGATION
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
 
-  t.addEventListener('click', () => {
-    const o = t.getAttribute('aria-expanded') === 'true';
+menuToggle.addEventListener('click', () => {
+  const isOpen =
+    menuToggle.getAttribute('aria-expanded') === 'true';
 
-    t.setAttribute('aria-expanded', String(!o));
-    t.setAttribute(
-      'aria-label',
-      o ? 'Open navigation' : 'Close navigation'
-    );
+  menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  menuToggle.setAttribute(
+    'aria-label',
+    isOpen ? 'Open navigation' : 'Close navigation'
+  );
 
-    m.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+
+
+// PROJECT MODAL
+const projectModal = document.querySelector('#project-modal');
+const modalPanel = projectModal.querySelector('.project-modal-panel');
+const modalContent = projectModal.querySelector('.modal-project-content');
+const closeButton = projectModal.querySelector('.modal-close');
+const backdrop = projectModal.querySelector('.modal-backdrop');
+
+let previouslyFocusedElement = null;
+
+
+// Open the selected project
+function openProject(project) {
+  previouslyFocusedElement = document.activeElement;
+
+  // Copy the selected project's existing content
+  const projectCopy = project.cloneNode(true);
+
+  // Avoid duplicate IDs when copying the project
+  projectCopy.removeAttribute('id');
+
+  // Insert the project into the modal
+  modalContent.replaceChildren(projectCopy);
+
+  // Update the accessible dialog title
+  const heading = projectCopy.querySelector('h2');
+
+  if (heading) {
+    modalPanel.setAttribute('aria-label', heading.textContent.trim());
+  }
+
+  // Open the modal
+  projectModal.classList.add('is-open');
+  projectModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Start at the top of the selected project
+  modalPanel.scrollTop = 0;
+
+  // Move keyboard focus into the modal
+  closeButton.focus();
+}
+
+
+// Close the modal
+function closeProject() {
+  if (!projectModal.classList.contains('is-open')) return;
+
+  projectModal.classList.remove('is-open');
+  projectModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  // Remove copied content after the closing animation
+  window.setTimeout(() => {
+    if (!projectModal.classList.contains('is-open')) {
+      modalContent.replaceChildren();
+    }
+  }, 300);
+
+  // Return focus to the previously selected project
+  if (previouslyFocusedElement) {
+    previouslyFocusedElement.focus();
+  }
+}
+
+
+// Make each project clickable
+document.querySelectorAll('.project-detail').forEach(project => {
+  project.setAttribute('role', 'button');
+  project.setAttribute('tabindex', '0');
+  project.setAttribute(
+    'aria-label',
+    'View project: ' +
+    (project.querySelector('h2')?.textContent.trim() || 'Project')
+  );
+
+  project.addEventListener('click', event => {
+    // Ignore clicks on links or buttons inside a project
+    if (event.target.closest('a, button')) return;
+
+    openProject(project);
   });
+
+  // Support Enter and Space on the keyboard
+  project.addEventListener('keydown', event => {
+    if (event.target !== project) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProject(project);
+    }
+  });
+});
+
+
+// Close button and backdrop
+closeButton.addEventListener('click', closeProject);
+backdrop.addEventListener('click', closeProject);
+
+
+// Close with Escape
+document.addEventListener('keydown', event => {
+  if (
+    event.key === 'Escape' &&
+    projectModal.classList.contains('is-open')
+  ) {
+    closeProject();
+  }
+});
 </script>
+```
 
 </body>
 </html>
