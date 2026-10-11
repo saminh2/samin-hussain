@@ -272,6 +272,33 @@
   <span>UW // 2026</span>
 </footer>
 
+```html
+<!-- PROJECT POP-UP MODAL -->
+<div class="project-modal" id="project-modal"
+     aria-hidden="true">
+
+  <div class="modal-backdrop"></div>
+
+  <div class="project-modal-panel"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Project details"
+       tabindex="-1">
+
+    <button class="modal-close"
+            type="button"
+            aria-label="Close project details">
+      &times;
+    </button>
+
+    <div class="modal-project-content">
+      <!-- Selected project is inserted here by JavaScript -->
+    </div>
+
+  </div>
+</div>
+```
+  
 <script>
   const t = document.querySelector('.menu-toggle');
   const m = document.querySelector('.mobile-nav');
