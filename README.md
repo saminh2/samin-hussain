@@ -19,9 +19,10 @@ A responsive static portfolio built with HTML and CSS for GitHub Pages.
  <article class="project-detail" id="constellations">
 
 Add projects with this template:
+     
       <img
-        src="assets/Constellations Project.png"
-        alt="Constellations Python visualization project"
+        src="assets/replace.png"
+        alt="Replace"
       >
 
       <div class="detail-copy">
@@ -30,7 +31,7 @@ Add projects with this template:
           <span></span> PYTHON / DATA VISUALIZATION
         </div>
 
-        <h2>CONSTELLATIONS</h2>
+        <h2>Replace header</h2>
 
         <div class="project-section">
           <h3>01 / THE PROBLEM</h3>
@@ -60,9 +61,9 @@ Add projects with this template:
         </div>
 
         <div class="tags">
-          <span>PYTHON</span>
-          <span>FILES</span>
-          <span>VISUALIZATION</span>
+          <span>Replace</span>
+          <span>Replace</span>
+          <span>Replace</span>
         </div>
 
       </div>
