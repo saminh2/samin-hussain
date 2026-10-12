@@ -19,8 +19,10 @@ A responsive static portfolio built with HTML and CSS for GitHub Pages.
  <article class="project-detail" id="constellations">
 
 Add projects with this template:
-     
-      <img
+
+  <article> 
+      
+    <img
         src="assets/replace.png"
         alt="Replace"
       >
