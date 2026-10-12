@@ -16,4 +16,54 @@ A responsive static portfolio built with HTML and CSS for GitHub Pages.
 4. Add project photos to `assets/` and swap them into the project visual areas.
 5. Commit the files to GitHub and enable GitHub Pages from the repository settings.
 
-The site intentionally uses CSS-generated visuals so it does not depend on the old CodeHS/stock-image URLs.
+ <article class="project-detail" id="constellations">
+
+Add projects with this template:
+      <img
+        src="assets/Constellations Project.png"
+        alt="Constellations Python visualization project"
+      >
+
+      <div class="detail-copy">
+
+        <div class="eyebrow">
+          <span></span> PYTHON / DATA VISUALIZATION
+        </div>
+
+        <h2>CONSTELLATIONS</h2>
+
+        <div class="project-section">
+          <h3>01 / THE PROBLEM</h3>
+          <p>
+            Turning structured constellation data into a visual
+            representation that makes star positions and patterns
+            easier to understand.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h3>02 / THE APPROACH</h3>
+          <p>
+            Used Python to read constellation data from files,
+            process star coordinates, and plot stars and patterns
+            on 2D coordinate axes.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h3>03 / THE OUTCOME</h3>
+          <p>
+            Built a data visualization tool while developing
+            practical skills in file handling, coordinate systems,
+            and translating structured data into visual output.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span>PYTHON</span>
+          <span>FILES</span>
+          <span>VISUALIZATION</span>
+        </div>
+
+      </div>
+    </article>
